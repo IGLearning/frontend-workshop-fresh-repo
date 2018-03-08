@@ -5,6 +5,7 @@ import {
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
+  console.log(action.type);
   switch (action.type) {
 
     case GET_OPEN_POSITIONS_REQUEST:
@@ -28,6 +29,7 @@ export default (state = {}, action) => {
       state = {
         ...state,
         isLoading: false,
+        positions: [],
         errorMessage: action.payload
       };
       break;
