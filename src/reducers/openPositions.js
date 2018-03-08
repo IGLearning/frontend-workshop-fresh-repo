@@ -8,28 +8,39 @@ export default (state = {}, action) => {
   switch (action.type) {
 
     case GET_OPEN_POSITIONS_REQUEST:
-      return {
+      state = {
         ...state,
         isLoading: true,
         errorMessage: undefined
       };
+      break;
 
     case GET_OPEN_POSITIONS_SUCCESS:
-      return {
+      state = {
         ...state,
         isLoading: false,
         positions: action.payload,
         errorMessage: undefined
       };
+      break;
 
     case GET_OPEN_POSITIONS_FAILURE:
-      return {
+      state = {
         ...state,
         isLoading: false,
         errorMessage: action.payload
       };
+      break;
 
     default:
-      return state;
   }
+
+  // Position need to be in pence, server sends us pounds!
+  if (state.positions) {
+    state.positions.forEach((position) => {
+      position.profitAndLoss = position.profitAndLoss * 100;
+    });
+  }
+
+  return state;
 }
