@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import {history} from '../../store';
-import {bindActionCreators} from 'redux';
 import {getMarkets} from '../../actions/getMarkets';
 import {getClient} from '../../actions/getClient';
 import {buy} from '../../actions/buy';
@@ -103,26 +102,24 @@ class MarketView extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    client: state.getClient.client,
+    client: state.client.client,
     confirmation: state.trade.confirmation,
     errors: state.trade.errorMessage,
-    markets: state.getMarkets.markets,
-    openPositions: state.getOpenPositions.positions,
-    openPositionsError: state.getOpenPositions.errorMessage,
-    readyToRenderMarkets: state.getMarkets.readyToRenderMarkets,
-    readyToRenderClient: state.getClient.readyToRenderClient,
+    markets: state.markets.markets,
+    openPositions: state.openPositions.positions,
+    openPositionsError: state.openPositions.errorMessage,
+    readyToRenderMarkets: state.markets.readyToRenderMarkets,
+    readyToRenderClient: state.client.readyToRenderClient,
     signedIn: state.signup.signedIn
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
+const mapDispatchToProps = {
     buy,
     sell,
     getMarkets,
     getOpenPositions,
     getClient
-  }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MarketView);

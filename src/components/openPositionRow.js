@@ -31,7 +31,7 @@ export default class OpenPositionRow extends Component {
         <TableRowColumn>
           <OpenPositionRowValue
             field={'marketId'}
-            value={position.marketId}
+            value={position.marketid}
           />
         </TableRowColumn>
         <TableRowColumn>
