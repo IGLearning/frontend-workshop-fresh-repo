@@ -10,7 +10,6 @@
     "lint": "./node_modules/.bin/eslint ./src"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "material-ui": "0.20.0",
     "react": "16.2.0",
     "react-bootstrap": "^0.31.2",
