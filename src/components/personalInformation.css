@@ -1,0 +1,12 @@
+.left {
+  clear: both;
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.personalInformation {
+  padding: 0 25px;
+}
